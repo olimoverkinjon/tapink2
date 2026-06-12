@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Erkinjon Olimov</title>
+<meta name="description" content="Erkinjon Olimov — rasmiy sahifa." />
+<meta property="og:title" content="Erkinjon Olimov" />
+<meta property="og:type" content="profile" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg:       #0d0c0b;
+    --surf:     rgba(255,255,255,.042);
+    --surf-h:   rgba(255,255,255,.072);
+    --line:     rgba(255,255,255,.09);
+    --line-h:   rgba(255,255,255,.15);
+
+    --gold:     #c9a96e;
+    --gold-low: rgba(201,169,110,.10);
+
+    --t1:  #f0ede8;
+    --t2:  #9e998f;
+    --t3:  #514e49;
+
+    --tg:  #2aabee;
+    --ig:  #e1306c;
+    --yt:  #ff3b30;
+    --wa:  #25d366;
+    --ph:  #7b8cff;
+
+    --r:  22px;
+    --r2: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--t1);
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(20px, 5vw, 52px) 16px;
+  }
+
+  /* Subtle ambient — warm gold at top, cool shadow at bottom */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 45% at 50% -10%, rgba(201,169,110,.07), transparent 72%),
+      radial-gradient(ellipse 90% 55% at 50% 110%, rgba(0,0,0,.55), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Wrap ─── */
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 415px;
+    margin: auto;
+  }
+
+  /* ─── Card ─── */
+  .card {
+    background: var(--surf);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: clamp(28px, 7vw, 42px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Champagne hairline — signature element */
+  .card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 18%; right: 18%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
+    opacity: .7;
+  }
+
+  /* ─── Entrance ─── */
+  @keyframes up {
+    from { opacity: 0; transform: translateY(13px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+  .f { opacity: 0; animation: up .5s cubic-bezier(.22,.72,.24,1) forwards; animation-delay: var(--d, 0s); }
+
+  /* ─── Avatar ─── */
+  .avatar {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    border: 1px solid var(--gold);
+    background: var(--gold-low);
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .avatar span {
+    font-family: "DM Serif Display", serif;
+    font-size: 27px;
+    color: var(--gold);
+    letter-spacing: .5px;
+    line-height: 1;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  /* ─── Name / role ─── */
+  .name {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(25px, 6.5vw, 31px);
+    font-weight: 400;
+    letter-spacing: -.15px;
+    line-height: 1.06;
+  }
+
+  .role {
+    margin-top: 9px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: .85;
+  }
+
+  .bio {
+    margin-top: 14px;
+    font-size: 13.5px;
+    line-height: 1.68;
+    color: var(--t2);
+    max-width: 27ch;
+    margin-inline: auto;
+    font-weight: 300;
+  }
+
+  /* ─── Divider ─── */
+  .sep {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-h) 30%, var(--line-h) 70%, transparent);
+    margin: 24px 0 20px;
+  }
+
+  /* ─── Section label ─── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: var(--t3);
+    text-align: left;
+    margin-bottom: 11px;
+    padding-left: 2px;
+  }
+
+  /* ─── Link list ─── */
+  .links { display: flex; flex-direction: column; gap: 8px; }
+
+  .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 13px;
+    border-radius: var(--r2);
+    border: 1px solid var(--line);
+    background: var(--surf);
+    color: var(--t1);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition:
+      background .18s ease,
+      border-color .18s ease,
+      transform .18s cubic-bezier(.25,.7,.25,1);
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+  }
+
+  /* Left brand accent */
+  .link::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 20%; bottom: 20%;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--brand, var(--gold));
+    opacity: 0;
+    transition: opacity .18s ease, top .18s ease, bottom .18s ease;
+  }
+
+  .link:hover,
+  .link:focus-visible {
+    background: var(--surf-h);
+    border-color: var(--line-h);
+    transform: translateX(3px);
+    outline: none;
+  }
+  .link:hover::before,
+  .link:focus-visible::before {
+    opacity: 1;
+    top: 15%; bottom: 15%;
+  }
+  .link:active { transform: translateX(1px) scale(.99); }
+
+  /* Icon box */
+  .ico {
+    flex: 0 0 auto;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.07);
+    color: var(--brand, var(--t2));
+    transition: color .18s ease;
+  }
+  .ico svg { width: 18px; height: 18px; }
+
+  .ltext { flex: 1; text-align: left; line-height: 1.3; }
+  .lsub  { display: block; font-size: 11.5px; font-weight: 300; color: var(--t2); margin-top: 1px; }
+
+  .arr {
+    flex: 0 0 auto;
+    color: var(--t3);
+    transition: transform .18s ease, color .18s ease;
+  }
+  .link:hover .arr { transform: translateX(3px); color: var(--t2); }
+
+  /* Brand tokens */
+  .b-tg { --brand: var(--tg); }
+  .b-ig { --brand: var(--ig); }
+  .b-yt { --brand: var(--yt); }
+  .b-wa { --brand: var(--wa); }
+  .b-ph { --brand: var(--ph); }
+
+  /* ─── 2-col contact grid ─── */
+  .contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 320px) { .contacts { grid-template-columns: 1fr; } }
+  .contacts .link  { padding: 10px 12px; }
+  .contacts .ico   { width: 34px; height: 34px; }
+  .contacts .ico svg { width: 16px; height: 16px; }
+  .contacts .arr   { display: none; }
+
+  /* ─── Footer ─── */
+  .foot {
+    margin-top: 26px;
+    font-size: 11px;
+    color: var(--t3);
+    letter-spacing: .5px;
+    font-weight: 300;
+  }
+  .foot em { color: var(--gold); font-style: normal; opacity: .8; }
+
+  @media (min-width: 640px) {
+    body { align-items: center; min-height: 100dvh; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .f { opacity: 1 !important; animation: none !important; }
+    * { transition-duration: .001ms !important; }
+  }
+</style>
+</head>
+
+<body>
+<main class="wrap">
+  <div class="card">
+
+    <!-- AVATAR: rasm qo'shish uchun <span>EO</span> o'rniga -->
+    <!-- <img src="rasm.jpg" alt="Erkinjon Olimov"> yozing -->
+    <div class="avatar f" style="--d:.04s">
+      <img src="rasm.png" alt="Erkinjon Olimov">
+    </div>
+
+    <h1 class="name f" style="--d:.11s">Erkinjon Olimov</h1>
+    <p  class="role f" style="--d:.17s">SMM MANAGER · Top targetolog</p>
+    <p  class="bio  f" style="--d:.23s">Quyidagi havolalar orqali bog'lanishingiz mumkin.</p>
+
+    <div class="sep f" style="--d:.28s"></div>
+
+    <!-- ── Social links ── -->
+    <p class="section-label f" style="--d:.32s">Ijtimoiy tarmoqlar</p>
+    <nav class="links">
+
+      <a class="link b-tg f" style="--d:.37s"
+         href="https://t.me/erkinjon_olimov" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21.94 4.27a1.3 1.3 0 0 0-1.32-.2L3.3 10.86c-.86.34-.83 1.58.05 1.87l4.3 1.4 1.64 5.06c.2.6.95.78 1.4.34l2.4-2.34 4.27 3.14c.5.37 1.22.1 1.36-.51l3.2-14.27a1.3 1.3 0 0 0-.48-1.32ZM9.7 14.2l8.2-5.04-6.42 5.96-.2 2.86-1.58-3.78Z"/>
+          </svg>
+        </span>
+        <span class="ltext">Telegram <span class="lsub">@username</span></span>
+        <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </a>
+
+      <a class="link b-ig f" style="--d:.42s"
+         href="https://www.instagram.com/erkinjon_olimov/" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="ltext">Instagram <span class="lsub">@username</span></span>
+        <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </a>
+
+      <a class="link b-yt f" style="--d:.47s"
+         href="https://youtube.com/@erkinjon_olimov" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.5 7.2a2.8 2.8 0 0 0-1.98-1.98C18.75 4.75 12 4.75 12 4.75s-6.75 0-8.52.47A2.8 2.8 0 0 0 1.5 7.2 29 29 0 0 0 1.03 12 29 29 0 0 0 1.5 16.8a2.8 2.8 0 0 0 1.98 1.98c1.77.47 8.52.47 8.52.47s6.75 0 8.52-.47a2.8 2.8 0 0 0 1.98-1.98c.32-1.58.47-3.18.47-4.8s-.15-3.22-.47-4.8ZM9.75 15.25v-6.5L15.5 12l-5.75 3.25Z"/>
+          </svg>
+        </span>
+        <span class="ltext">YouTube <span class="lsub">@kanal nomi</span></span>
+        <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </a>
+
+    </nav>
+
+    <div class="sep f" style="--d:.51s"></div>
+
+    <!-- ── Contact grid ── -->
+    <p class="section-label f" style="--d:.55s">Aloqa uchun</p>
+    <div class="contacts">
+
+      <a class="link b-ph f" style="--d:.59s" href="tel:+998888150424" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+          </svg>
+        </span>
+        <span class="ltext">Telefon <span class="lsub">+998 90 000 00 00</span></span>
+      </a>
+
+      <a class="link b-wa f" style="--d:.63s"
+         href="https://wa.me/998888150424" target="_blank" rel="noopener">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.47 14.38c-.3-.15-1.8-.89-2.08-.99-.28-.1-.48-.15-.68.15-.2.3-.77.99-.95 1.19-.17.2-.35.23-.65.08a8.2 8.2 0 0 1-2.42-1.49 9.1 9.1 0 0 1-1.67-2.08c-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.24-.24-.59-.49-.5 -.68-.51H8.1c-.2 0-.5.07-.76.37 -.27.3-1 .98-1 2.38s1.02 2.76 1.16 2.95c.15.2 2 3.06 4.86 4.29.68.29 1.21.47 1.62.6.68.22 1.3.19 1.79.11. 55-.07 1.8-.73 2.05-1.44.25-.7.25-1.3.18-1.44-.07-.15-.28-.23-.58-.38Z"/>
+
+          </svg>
+        </span>
+        <span class="ltext">WhatsApp <span class="lsub">Xabar yuboring</span></span>
+      </a>
+
+    </div>
+
+    <p class="foot f" style="--d:.74s">© 2026 <em>Erkinjon Olimov</em></p>
+
+  </div>
+</main>
+</body>
+</html>
