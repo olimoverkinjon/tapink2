@@ -16,20 +16,20 @@
 
 <style>
   :root {
-    --bg:       #d9e7f6;   /* ochiq ko'k fon */
-    --card:     #ffffff;
-    --surf:     #f2f7fc;
-    --surf-h:   #e7f0fa;
-    --line:     rgba(27,42,68,.10);
-    --line-h:   rgba(27,42,68,.20);
+    --bg:       #dbeafe;
+    --card:     linear-gradient(145deg, #75c7f4 0%, #2779c7 46%, #0b2f6b 100%);
+    --surf:     rgba(255,255,255,.12);
+    --surf-h:   rgba(255,255,255,.20);
+    --line:     rgba(255,255,255,.22);
+    --line-h:   rgba(255,255,255,.40);
 
-    --gold:      #c9a96e;
-    --gold-deep: #8a6d28;            /* matn uchun — ochiq fonda o'qiladi */
-    --gold-low:  rgba(201,169,110,.15);
+    --gold:      #bfe9ff;
+    --gold-deep: #e7f7ff;
+    --gold-low:  rgba(255,255,255,.16);
 
-    --t1:  #1b2a44;
-    --t2:  #5b6a82;
-    --t3:  #97a3b8;
+    --t1:  #ffffff;
+    --t2:  #dbeeff;
+    --t3:  #b8d7f2;
 
     --tg:    #2aabee;   /* Telegram */
     --ig:    #e1306c;   /* Instagram */
@@ -64,8 +64,8 @@
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 45% at 50% -8%, rgba(255,255,255,.65), transparent 70%),
-      radial-gradient(ellipse 95% 60% at 50% 115%, rgba(120,160,210,.30), transparent 72%);
+      radial-gradient(ellipse 70% 45% at 50% -8%, rgba(255,255,255,.82), transparent 70%),
+      radial-gradient(ellipse 95% 60% at 50% 115%, rgba(22,91,170,.28), transparent 72%);
     pointer-events: none;
     z-index: 0;
   }
@@ -88,7 +88,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 55px -22px rgba(27,42,68,.30);
+    box-shadow: 0 26px 65px -24px rgba(8,45,99,.55);
   }
 
   /* Champagne hairline — signature */
@@ -238,9 +238,9 @@
     width: 36px; height: 36px;
     border-radius: 10px;
     display: grid; place-items: center;
-    background: #eef4fb;
-    border: 1px solid rgba(27,42,68,.07);
-    color: var(--brand, var(--t2));
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(255,255,255,.50);
+    color: var(--brand, #2563a7);
     transition: color .18s ease;
   }
   .ico svg { width: 18px; height: 18px; }
